@@ -28,11 +28,6 @@ export class PersonComponent implements OnInit {
         });
       }
     );
-     // this.currentRoute.params.subscribe(
-    //   (params: Params) => {
-    //     this.server = this.serversService.getServer(+params['id']);
-    //   }
-    // );
   }
 
 }
