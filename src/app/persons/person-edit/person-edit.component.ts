@@ -44,8 +44,6 @@ export class PersonEditComponent implements OnInit {
       }, {headers: this.header})
       .subscribe(()=>{console.log()},
       (error)=>{console.log(error)})
-
-      console.log(this.persForm.value['name']);
     }
     else {
       return this.http.post(this.url, {
@@ -54,9 +52,6 @@ export class PersonEditComponent implements OnInit {
       }, {headers: this.header})
       .subscribe(()=>{console.log()},
       (error)=>{console.log(error)})
-
-      
-      console.log(this.persForm.value['name']);
     }
   }
 
