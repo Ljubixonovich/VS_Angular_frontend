@@ -15,7 +15,7 @@
           <td>{{person.id}}</td>
           <td>{{person.name}}</td>
           <td>{{person.age}}</td>
-          <td><button (click)=getOne(person.id)>Get</button></td>
+          <td><a [routerLink]="[person.id]">Details</a><button (click)=getOne(person.id)>Get</button></td>
           <td><button (click)=deleteOne(person.id)>Delete</button></td>
         </tr>
       </tbody>
@@ -27,5 +27,7 @@
 
   <div class="col-md-6">
     <h4 *ngIf="selectedPerson">{{selectedPerson.name}} ima {{selectedPerson.age}} godina.</h4>
+    <hr>
+    <router-outlet></router-outlet>
   </div>
 </div>
