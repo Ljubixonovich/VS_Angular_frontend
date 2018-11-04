@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Headers, Http, Response } from '@angular/http';
-import { HttpHeaders } from '@angular/common/http';
 import { Person } from './person';
+import { PersonApiServicesService } from './person-api-services.service';
 
 @Component({
   selector: 'app-persons',
@@ -14,7 +14,7 @@ export class PersonsComponent implements OnInit {
   selectedPerson: Person;
   url = "http://localhost:53900/api/People";
 
-  constructor(private http: Http) { }
+  constructor(private http: Http, private personService: PersonApiServicesService) { }
 
   ngOnInit() {
     this.getAll();
@@ -27,12 +27,6 @@ export class PersonsComponent implements OnInit {
     })
   }
 
-  getOne(id: number) {
-    this.http.get(this.url + '/' +  id).subscribe((response: Response) => {
-      this.selectedPerson = response.json();
-    })
-  }
-
   deleteOne(id: number) {
     this.http.delete(this.url + '/' + id).subscribe((response: Response) => {
       this.getAll();
@@ -42,7 +36,6 @@ export class PersonsComponent implements OnInit {
   addNewPerson() {
     let newPerson = {name: "Djoka", age: 78};
     let header1 = new Headers({'Content-Type': 'application/json'});
-    let header2 = new HttpHeaders({'Content-Type':  'application/json'});
 
     return this.http.post(this.url, newPerson, {headers: header1})
     .subscribe((response: Response) => {

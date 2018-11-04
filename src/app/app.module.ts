@@ -7,13 +7,16 @@ import {HttpModule} from '@angular/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { PersonsComponent } from './persons/persons.component';
-import { PersonComponent } from './persons/person/person.component';
+import { PersonDetailsComponent } from './persons/person-details/person.component';
+import { PersonEditComponent } from './persons/person-edit/person-edit.component';
+import { PersonApiServicesService } from './persons/person-api-services.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     PersonsComponent,
-    PersonComponent
+    PersonDetailsComponent,
+    PersonEditComponent
   ],
   imports: [
     BrowserModule,
@@ -21,7 +24,7 @@ import { PersonComponent } from './persons/person/person.component';
     FormsModule,
     HttpModule
   ],
-  providers: [],
+  providers: [PersonApiServicesService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

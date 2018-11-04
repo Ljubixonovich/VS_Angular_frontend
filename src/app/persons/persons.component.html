@@ -4,8 +4,8 @@
 
 <div class="row">
   <div class="col-md-6">
-    <table>
-      <thead>
+    <table class="table table-bordered table-striped">
+      <thead class="font-weight-bold">
         <td>Id</td>
         <td>Name</td>
         <td>Age</td>
@@ -15,19 +15,19 @@
           <td>{{person.id}}</td>
           <td>{{person.name}}</td>
           <td>{{person.age}}</td>
-          <td><a [routerLink]="[person.id]">Details</a><button (click)=getOne(person.id)>Get</button></td>
+          <td><a [routerLink]="[person.id]">Details</a></td>
+          <td><button><a [routerLink]="[person.id, 'edit']">Edit</a></button></td>
           <td><button (click)=deleteOne(person.id)>Delete</button></td>
         </tr>
       </tbody>
     </table>
 
-    <button (click)="addNewPerson()">Add new Person</button>
+    <button (click)="addNewPerson()">Add new Djoka</button>    
     <button (click)="getAll()">Get all Person</button>
+    <button><a [routerLink]="['new']">New Person</a></button>
   </div>
 
   <div class="col-md-6">
-    <h4 *ngIf="selectedPerson">{{selectedPerson.name}} ima {{selectedPerson.age}} godina.</h4>
-    <hr>
     <router-outlet></router-outlet>
   </div>
 </div>
