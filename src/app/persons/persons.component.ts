@@ -18,6 +18,9 @@ export class PersonsComponent implements OnInit {
 
   ngOnInit() {
     this.getAll();
+    this.personService.listaObservable.subscribe(()=>{
+      this.getAll();
+    });
   }
 
 

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Http, Response, Headers } from '@angular/http';
 import { Person } from './person';
+import { Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -9,6 +10,7 @@ export class PersonApiServicesService {
   url = "http://localhost:53900/api/People";
   header = new Headers({'Content-Type': 'application/json'});
   persons: Person[] = [];
+  listaObservable = new Subject();
 
   constructor(private http: Http) { }
 

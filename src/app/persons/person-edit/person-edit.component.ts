@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
 import { PersonApiServicesService } from '../person-api-services.service';
 import { Http, Headers } from '@angular/http';
@@ -20,7 +20,8 @@ export class PersonEditComponent implements OnInit {
 
   constructor(private currentRoute: ActivatedRoute, 
     private personSevice: PersonApiServicesService,
-    private http: Http) { }
+    private http: Http,
+    private router: Router) { }
 
   ngOnInit() {
     this.currentRoute.params.subscribe(
@@ -42,7 +43,10 @@ export class PersonEditComponent implements OnInit {
         name: this.persForm.value['name'],
         age: this.persForm.value['age']
       }, {headers: this.header})
-      .subscribe(()=>{console.log()},
+      .subscribe(()=>{
+        this.personSevice.listaObservable.next();
+        this.router.navigate(['persons']);
+      },
       (error)=>{console.log(error)})
     }
     else {
@@ -50,9 +54,14 @@ export class PersonEditComponent implements OnInit {
         name: this.persForm.value['name'],
         age: this.persForm.value['age']
       }, {headers: this.header})
-      .subscribe(()=>{console.log()},
+      .subscribe(()=>{
+        this.personSevice.listaObservable.next();
+        this.router.navigate(['persons']);
+      },
       (error)=>{console.log(error)})
     }
+
+    
   }
 
 
